@@ -23,7 +23,7 @@ const SearchResults = () => {
   return (
     <StyledSection>
       <h1>Arama sonuçları</h1>
-      {!results.length ? <p>{results[0]?.anlamlarListe[0]?.anlam}</p> : "hata"}
+      {results.length ? <p>{results[0]?.anlamlarListe[0]?.anlam}</p> : "hata"}
     </StyledSection>
   );
 };
