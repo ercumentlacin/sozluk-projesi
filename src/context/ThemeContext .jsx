@@ -4,6 +4,8 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
+  const [word, setWord] = useState("");
+  const [results, setResults] = useState("");
 
   const toggleTheme = () => {
     if (theme === "light") {
@@ -16,6 +18,10 @@ export const ThemeProvider = ({ children }) => {
   const value = {
     theme,
     toggleTheme,
+    word,
+    setWord,
+    results,
+    setResults,
   };
 
   return (

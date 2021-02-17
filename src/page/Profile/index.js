@@ -4,11 +4,7 @@ import { StyledSection } from "./style";
 const Profile = () => {
   const { theme } = useContext(ThemeContext);
 
-  return (
-    <StyledSection>
-      <h1>Profile</h1>
-    </StyledSection>
-  );
+  return <StyledSection>{theme}</StyledSection>;
 };
 
 export default Profile;
