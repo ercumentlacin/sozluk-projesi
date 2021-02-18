@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext ";
-import { StyledSection } from "./style";
 import { useParams } from "react-router-dom";
+import { StyledSection } from "./style";
+// Components
+import { Row, Col } from "antd";
+import HeadingTitle from "../../components/HeadingTitle";
 
 const SearchResults = () => {
   const { results, setResults } = useContext(ThemeContext);
@@ -20,10 +23,22 @@ const SearchResults = () => {
   }, [history]);
 
   console.log(results[0]?.anlamlarListe[0]?.anlam);
+  const title =
+    results[0]?.madde?.slice(0, 1).toUpperCase() +
+    results[0]?.madde?.slice(1, results[0]?.madde?.length);
+
   return (
     <StyledSection>
-      <h1>Arama sonuçları</h1>
-      {results.length ? <p>{results[0]?.anlamlarListe[0]?.anlam}</p> : "hata"}
+      <Row>
+        <Col xs={{ span: 24 }} sm={{ span: 20, offset: 2 }}>
+          <HeadingTitle title={title} />
+          {results.length ? (
+            <p>{results[0]?.anlamlarListe[0]?.anlam}</p>
+          ) : (
+            "hata"
+          )}
+        </Col>
+      </Row>
     </StyledSection>
   );
 };

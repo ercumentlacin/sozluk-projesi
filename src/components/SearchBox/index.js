@@ -6,6 +6,7 @@ import { Input } from "antd";
 const SearchBox = () => {
   let history = useHistory();
   const { word, setWord, setResults } = useContext(ThemeContext);
+  const { Search } = Input;
 
   useEffect(() => {
     fetch(`https://www.sozluk.gov.tr/gts?ara=${word}`)
@@ -15,8 +16,6 @@ const SearchBox = () => {
         (err) => console.log(err)
       );
   }, [word]);
-
-  const { Search } = Input;
 
   const onSearch = (value) => {
     setWord(value);
