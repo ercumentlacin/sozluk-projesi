@@ -8,4 +8,10 @@ export const StyledHeadingTitle = styled.h1`
   font-weight: 700;
   margin-bottom: 0;
   color: #446866;
+  word-wrap: break-word;
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
 `;

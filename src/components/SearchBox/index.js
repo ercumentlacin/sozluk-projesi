@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import ThemeContext from "../../context/ThemeContext ";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Input } from "antd";
 
 const SearchBox = () => {
@@ -17,10 +17,13 @@ const SearchBox = () => {
       );
   }, [word]);
 
-  const onSearch = (value) => {
-    setWord(value);
-  };
+  const onSearch = (value) => setWord(value);
   const handleSubmit = () => history.push(`/kelime/${word}`);
+
+  useEffect(() => {
+    const searchButton = document.querySelector(".ant-btn");
+    searchButton.setAttribute("type", "submit");
+  }, []);
 
   return (
     <div>
