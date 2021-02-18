@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import ThemeContext from "../../context/ThemeContext ";
+import { Redirect, useHistory } from "react-router-dom";
 import { Input } from "antd";
 
 const SearchBox = () => {
+  let history = useHistory();
   const { word, setWord, setResults } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -15,11 +17,21 @@ const SearchBox = () => {
   }, [word]);
 
   const { Search } = Input;
-  const onSearch = (value) => setWord(value);
+
+  const onSearch = (value) => {
+    setWord(value);
+  };
+  const handleSubmit = () => history.push(`/kelime/${word}`);
 
   return (
     <div>
-      <Search placeholder="input search text" onSearch={onSearch} enterButton />
+      <form onSubmit={handleSubmit}>
+        <Search
+          placeholder="input search text"
+          onSearch={onSearch}
+          enterButton
+        />
+      </form>
     </div>
   );
 };
