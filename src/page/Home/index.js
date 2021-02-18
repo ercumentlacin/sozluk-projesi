@@ -13,10 +13,12 @@ const Home = () => {
       <Row>
         <Col xs={{ span: 24 }} sm={{ span: 20, offset: 2 }}>
           <Row align="middle">
-            <Col xs={{ span: 3, offset: 1 }} sm={{ span: 4, offset: 2 }}>
+            {/* logo */}
+            <Col xs={{ span: 2, offset: 1 }} sm={{ span: 4, offset: 2 }}>
               <Logo />
             </Col>
-            <Col xs={{ span: 18, offset: 1 }} sm={{ span: 16, offset: 2 }}>
+            {/* search input */}
+            <Col xs={{ span: 16, offset: 1 }} sm={{ span: 12, offset: 2 }}>
               <SearchBox />
             </Col>
           </Row>
