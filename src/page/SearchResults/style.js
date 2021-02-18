@@ -19,5 +19,12 @@ export const StyledSection = styled.section`
         font-weight: 500;
       }
     }
+    .ataturk__image {
+      justify-content: flex-start;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
 `;
