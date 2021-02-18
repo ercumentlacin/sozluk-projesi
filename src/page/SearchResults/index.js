@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext ";
 import { useParams } from "react-router-dom";
 import { StyledSection } from "./style";
 import AtaturkImage from "../../assets/ataturk.png";
 // Components
-import { Row, Col } from "antd";
+import { Row, Col, Result, Button } from "antd";
 import HeadingTitle from "../../components/HeadingTitle";
 
 const SearchResults = () => {
@@ -32,7 +32,10 @@ const SearchResults = () => {
   return (
     <StyledSection>
       <Row>
-        <Col xs={{ span: 20, offset: 2 }} sm={{ span: 14, offset: 2 }}>
+        <Col
+          xs={{ span: 20, offset: 2 }}
+          sm={title ? { span: 14, offset: 2 } : { span: 20, offset: 2 }}
+        >
           <HeadingTitle title={title} />
           {results.length ? (
             <>
@@ -46,7 +49,16 @@ const SearchResults = () => {
               })}
             </>
           ) : (
-            "hata"
+            <Result
+              status="404"
+              title="404"
+              subTitle="Aradığınız kelime sözlüğümüzde yer almıyor."
+              extra={
+                <Button type="primary">
+                  <Link to="/">Anasayfaya geri dön</Link>
+                </Button>
+              }
+            />
           )}
         </Col>
         <Col
@@ -54,7 +66,9 @@ const SearchResults = () => {
           xs={{ span: 0 }}
           sm={{ span: 8, offset: 0 }}
         >
-          <img src={`${AtaturkImage}`} alt="Mustafa Kemal Atatürk" />
+          {title ? (
+            <img src={`${AtaturkImage}`} alt="Mustafa Kemal Atatürk" />
+          ) : null}
         </Col>
       </Row>
     </StyledSection>
