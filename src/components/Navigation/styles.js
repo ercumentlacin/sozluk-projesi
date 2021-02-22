@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
     display: flex;
     padding: 0.5rem 2rem;
     align-items: center;
+    flex-wrap: wrap;
 
     .copy {
       display: flex;
@@ -60,6 +61,16 @@ export const StyledHeader = styled.header`
             opacity: 0.5;
           }
         }
+      }
+    }
+  }
+  @media screen and (max-width: 30rem) {
+    .navigation__top {
+      flex-direction: column;
+
+      .links {
+        margin-left: 0;
+        margin-top: 0.5rem;
       }
     }
   }
