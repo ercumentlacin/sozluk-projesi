@@ -13,6 +13,8 @@ const SearchResults = () => {
   let { slug } = useParams();
   let history = useHistory();
 
+  const uniqueWord = history.location.pathname.slice(8);
+
   useEffect(() => {
     const word = history.location.pathname.slice(8);
     async function fetchData() {
@@ -20,15 +22,15 @@ const SearchResults = () => {
       const jsonData = await response.json();
       setResults(jsonData);
     }
-    fetchData();
-  }, [history]);
 
-  console.log(results[0]?.anlamlarListe[0]?.anlam);
+    fetchData();
+  }, [uniqueWord]);
+
   const title =
     results[0]?.madde?.slice(0, 1).toUpperCase() +
     results[0]?.madde?.slice(1, results[0]?.madde?.length);
-  console.log("ismail", results[0]);
-  console.log(results[0]);
+
+  console.log({ results, uniqueWord });
   return (
     <StyledSection>
       <Row>
@@ -36,12 +38,15 @@ const SearchResults = () => {
           xs={{ span: 20, offset: 2 }}
           sm={title ? { span: 14, offset: 2 } : { span: 20, offset: 2 }}
         >
-          <HeadingTitle title={title} />
-          {results.length ? (
+          <Link to={history.location.pathname}>
+            <HeadingTitle title={title} />
+          </Link>
+
+          {results?.length ? (
             <>
-              {results[0]?.anlamlarListe?.map((kelime, index) => {
+              {results[0].anlamlarListe?.map((kelime, index) => {
                 return (
-                  <p>
+                  <p key={index}>
                     <strong>{index + 1}.Anlam: </strong>
                     {kelime.anlam}
                   </p>

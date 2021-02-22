@@ -14,14 +14,14 @@ const SearchResult = () => {
       const jsonData = await response.json();
       setResults(jsonData);
     }
+
     fetchData();
-  }, []);
+  }, [results]);
+  console.log("ne", results);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
-  console.log(results);
 
   return (
     <StyledDıv>
