@@ -4,6 +4,7 @@ import {
   UserOutlined,
   HomeOutlined,
   InfoCircleOutlined,
+  BookOutlined,
 } from "@ant-design/icons";
 import { StyledHeader } from "./styles";
 import { Link } from "react-router-dom";
@@ -16,6 +17,9 @@ const Navbar = () => {
           <Menu mode="horizontal">
             <Menu.Item key="home" icon={<HomeOutlined />}>
               <Link to="/">Anasayfa</Link>
+            </Menu.Item>
+            <Menu.Item key="FavoriteWords" icon={<BookOutlined />}>
+              <Link to="/favori-kelimeler">Favori Kelimeler</Link>
             </Menu.Item>
             <Menu.Item key="about" icon={<InfoCircleOutlined />}>
               <Link to="/hakkimizda">Hakkımızda</Link>

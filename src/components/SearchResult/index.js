@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { StyledDıv } from "./style";
-import { Row, Col, Divider, Typography } from "antd";
+import { Row, Col, Typography } from "antd";
 import ThemeContext from "../../context/ThemeContext ";
 
 const SearchResult = () => {
@@ -21,13 +21,12 @@ const SearchResult = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  console.log(results);
+  console.log("SearchResult => " + results);
 
   return (
     <StyledDıv>
       <Row>
         <Col xs={{ span: 24 }} sm={{ span: 20, offset: 2 }}>
-          <Divider />
           <Title level={5}>
             {results.length ? (
               <p>{capitalizeFirstLetter(results[0]?.madde)}</p>

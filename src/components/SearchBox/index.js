@@ -13,7 +13,7 @@ const SearchBox = () => {
       .then((res) => res.json())
       .then(
         (res) => setResults(res),
-        (err) => console.log(err)
+        (err) => console.log("SearchBox!!!!! =>" + err)
       );
   }, [word]);
 
