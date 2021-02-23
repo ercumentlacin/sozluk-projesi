@@ -9,6 +9,7 @@ import { Row, Col, Result, Button } from "antd";
 import HeadingTitle from "../../components/HeadingTitle";
 
 const SearchResults = () => {
+  let b;
   const { results, setResults } = useContext(ThemeContext);
   let { slug } = useParams();
   let history = useHistory();
@@ -41,17 +42,58 @@ const SearchResults = () => {
           <Link to={history.location.pathname}>
             <HeadingTitle title={title} />
           </Link>
-
           {results?.length ? (
             <>
-              {results[0].anlamlarListe?.map((kelime, index) => {
-                return (
-                  <p key={index}>
-                    <strong>{index + 1}.Anlam: </strong>
-                    {kelime.anlam}
-                  </p>
-                );
-              })}
+              {results?.map(
+                ({ madde, anlamlarListe, madde_id, kac, birlesikler }) => {
+                  return (
+                    <div key={madde_id}>
+                      <h2>{`${madde} ${kac != 0 ? `(${kac})` : ""}`}</h2>
+                      {anlamlarListe?.map(
+                        ({ anlam_sira, anlam, anlam_id, ozelliklerListe }) => {
+                          return (
+                            <p key={anlam_id}>
+                              <strong>{`${anlam_sira}. `}</strong>
+                              <span>
+                                <strong>
+                                  {ozelliklerListe ? (
+                                    ozelliklerListe?.map(
+                                      ({ ozellik_id, tam_adi }) => {
+                                        return (
+                                          <em key={ozellik_id}>
+                                            {`${tam_adi} `}
+                                          </em>
+                                        );
+                                      }
+                                    )
+                                  ) : (
+                                    <em>isim </em>
+                                  )}
+                                </strong>
+                              </span>
+                              {anlam}
+                            </p>
+                          );
+                        }
+                      )}
+                      {birlesikler && (
+                        <div className="words__links">
+                          <h4>
+                            <strong>Benzer Kelimeler:</strong>{" "}
+                          </h4>
+                          {birlesikler?.split(", ").map((word, index) => {
+                            return (
+                              <Link key={index} to={`/kelime/${word}`}>
+                                {word}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+              )}
             </>
           ) : (
             <Result

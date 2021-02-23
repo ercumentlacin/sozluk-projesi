@@ -16,4 +16,19 @@ export const GlobalStyle = styled.div`
       color: black;
     }
   }
+
+  .ant-btn-primary {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background: #231f20;
+    border: 0;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 `;
