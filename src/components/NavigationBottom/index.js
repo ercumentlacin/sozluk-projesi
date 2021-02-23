@@ -6,7 +6,9 @@ import { SearchOutlined } from "@ant-design/icons";
 
 const NavigationBottom = () => {
   let history = useHistory();
-  const { word, setWord, setResults } = useContext(ThemeContext);
+  const { word, setWord, newWord, setNewWord, setResults } = useContext(
+    ThemeContext
+  );
 
   useEffect(() => {
     fetch(`https://www.sozluk.gov.tr/gts?ara=${word}`)
@@ -18,12 +20,17 @@ const NavigationBottom = () => {
   }, [word]);
 
   const handleChange = (e) => {
-    setWord(e.target.value);
+    setNewWord(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/kelime/${word}`);
+    setWord(newWord);
+    history.push(`/kelime/${newWord}`);
   };
+
+  console.log("word", word);
+  console.log("newWord", newWord);
 
   return (
     <StyledNavigationBottom>
@@ -42,7 +49,7 @@ const NavigationBottom = () => {
             type="search"
             name="search"
             placeholder="Kelime ara"
-            value={word}
+            value={newWord}
           />
           <SearchOutlined />
         </div>

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   background-color: white;
+  box-shadow: 0 4px 13px -3px rgb(0 0 0 / 10%);
+  border-bottom: 1px solid #d2d2d2;
 
   .navigation__top {
     display: flex;
