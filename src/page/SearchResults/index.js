@@ -10,8 +10,8 @@ import HeadingTitle from "../../components/HeadingTitle";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const SearchResults = () => {
-  let b;
-  const { results, setResults, addFavorite } = useContext(ThemeContext);
+  const [isFav, setIsFav] = useState(false);
+  const { results, setResults, dispatch, favWords } = useContext(ThemeContext);
   let { slug } = useParams();
   let history = useHistory();
 
@@ -34,6 +34,28 @@ const SearchResults = () => {
 
   console.log({ results, uniqueWord });
 
+  const handleClick = (e) => {
+    console.log(favWords);
+    console.log(favWords.every(({ madde }) => madde !== uniqueWord));
+    if (favWords.every(({ madde }) => madde !== uniqueWord)) {
+      dispatch({
+        type: "ADD_FAV",
+        favWords: {
+          madde: uniqueWord,
+        },
+      });
+      setIsFav(true);
+    } else {
+      dispatch({
+        type: "REMOVE_FAV",
+        favWords: {
+          madde: uniqueWord,
+        },
+      });
+      setIsFav(false);
+    }
+  };
+
   return (
     <StyledSection>
       <Row>
@@ -45,7 +67,11 @@ const SearchResults = () => {
             <Link to={history.location.pathname}>
               <HeadingTitle title={title} />
             </Link>
-            <StarOutlined onClick={addFavorite} />
+            {favWords.every(({ madde }) => madde !== uniqueWord) ? (
+              <StarOutlined onClick={handleClick} />
+            ) : (
+              <StarFilled onClick={handleClick} />
+            )}
           </div>
           {results?.length ? (
             <>
