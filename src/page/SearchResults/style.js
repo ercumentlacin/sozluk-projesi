@@ -11,6 +11,30 @@ export const StyledSection = styled.section`
     rgba(255, 255, 255, 1) 100%
   );
 
+  .tittle__fav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    a {
+      h1 {
+        width: min-content;
+        line-height: 5rem;
+      }
+    }
+
+    span {
+      margin-left: 1rem;
+      padding-top: 0.5rem;
+      cursor: pointer;
+
+      svg {
+        color: #446866;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
   @media screen and (max-width: 35rem) {
     min-height: calc(100vh - 12.1425rem);
   }

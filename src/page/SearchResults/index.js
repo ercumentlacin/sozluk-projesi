@@ -7,10 +7,11 @@ import AtaturkImage from "../../assets/ataturk.png";
 // Components
 import { Row, Col, Result, Button } from "antd";
 import HeadingTitle from "../../components/HeadingTitle";
+import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const SearchResults = () => {
   let b;
-  const { results, setResults } = useContext(ThemeContext);
+  const { results, setResults, addFavorite } = useContext(ThemeContext);
   let { slug } = useParams();
   let history = useHistory();
 
@@ -32,6 +33,7 @@ const SearchResults = () => {
     results[0]?.madde?.slice(1, results[0]?.madde?.length);
 
   console.log({ results, uniqueWord });
+
   return (
     <StyledSection>
       <Row>
@@ -39,9 +41,12 @@ const SearchResults = () => {
           xs={{ span: 20, offset: 2 }}
           sm={title ? { span: 14, offset: 2 } : { span: 20, offset: 2 }}
         >
-          <Link to={history.location.pathname}>
-            <HeadingTitle title={title} />
-          </Link>
+          <div className="tittle__fav">
+            <Link to={history.location.pathname}>
+              <HeadingTitle title={title} />
+            </Link>
+            <StarOutlined onClick={addFavorite} />
+          </div>
           {results?.length ? (
             <>
               {results?.map(

@@ -1,30 +1,43 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
   const [word, setWord] = useState("");
   const [newWord, setNewWord] = useState("");
   const [results, setResults] = useState("");
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+  const [favWords, setFavWords] = useState([{ madde: "deneme" }]);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("favWords", JSON.stringify(favWords));
+    localStorage.getItem("favWords");
+  }, [favWords]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("favWords", JSON.stringify(favWords));
+  // });
+
+  const addFavorite = (madde = results) => {
+    let deneme = results.map(({ madde }) => madde).toString();
+    console.log(deneme);
+    setFavWords([...favWords, { madde: deneme }].map((i) => i));
+    console.log(favWords);
+
+    alert("Favrilere eklendi");
   };
 
+  console.log(favWords);
+
   const value = {
-    theme,
-    toggleTheme,
     word,
     setWord,
     results,
     setResults,
     newWord,
     setNewWord,
+    addFavorite,
   };
 
   return (
