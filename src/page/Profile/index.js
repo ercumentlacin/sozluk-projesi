@@ -1,19 +1,30 @@
 import { Col, Row } from "antd";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext ";
 import { StyledSection } from "./style";
 const Profile = () => {
-  const { favWords } = useContext(ThemeContext);
+  const { favWords, searchHistory } = useContext(ThemeContext);
   const [isFav, setIsFav] = useState(true);
 
   const showFav = (e) => {
     return !isFav ? setIsFav(true) : null;
   };
-
   const showHistory = (e) => {
     return isFav ? setIsFav(false) : null;
   };
+
+  useEffect(() => {
+    const localData = localStorage.getItem("searchHistory");
+    return localData ? JSON.parse(localData) : [];
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
+
+  console.log({ geçmiş: searchHistory });
+
   return (
     <StyledSection>
       <Row>
@@ -35,7 +46,15 @@ const Profile = () => {
               );
             })
           ) : (
-            <h1>Geçmiş</h1>
+            <>
+              {searchHistory?.map((word, index) => {
+                return (
+                  <h4 key={index}>
+                    <Link to={`/kelime/${word}`}>{word}</Link>
+                  </h4>
+                );
+              })}
+            </>
           )}
         </Col>
       </Row>

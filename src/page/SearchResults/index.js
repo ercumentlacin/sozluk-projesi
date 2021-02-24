@@ -11,11 +11,22 @@ import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const SearchResults = () => {
   const [isFav, setIsFav] = useState(false);
-  const { results, setResults, dispatch, favWords } = useContext(ThemeContext);
+  const {
+    results,
+    setResults,
+    dispatch,
+    favWords,
+    searchHistory,
+    setSearchHistory,
+  } = useContext(ThemeContext);
   let { slug } = useParams();
   let history = useHistory();
 
   const uniqueWord = history.location.pathname.slice(8);
+
+  useEffect(() => {
+    setSearchHistory([...searchHistory, uniqueWord]);
+  }, [uniqueWord]);
 
   useEffect(() => {
     const word = history.location.pathname.slice(8);

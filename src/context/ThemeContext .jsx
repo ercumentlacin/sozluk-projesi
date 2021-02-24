@@ -8,11 +8,12 @@ export const ThemeProvider = ({ children }) => {
   const [newWord, setNewWord] = useState("");
   const [results, setResults] = useState("");
 
+  const [searchHistory, setSearchHistory] = useState([]);
+
   const [favWords, dispatch] = useReducer(favWordsReducer, [], () => {
     const localData = localStorage.getItem("favWords");
     return localData ? JSON.parse(localData) : [];
   });
-  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("favWords", JSON.stringify(favWords));
@@ -27,6 +28,8 @@ export const ThemeProvider = ({ children }) => {
     setNewWord,
     dispatch,
     favWords,
+    searchHistory,
+    setSearchHistory,
   };
 
   return (
