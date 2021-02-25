@@ -48,11 +48,7 @@ const SearchResults = () => {
     results[0]?.madde?.slice(0, 1).toUpperCase() +
     results[0]?.madde?.slice(1, results[0]?.madde?.length);
 
-  console.log({ results, uniqueWord });
-
   const handleClick = (e) => {
-    console.log(favWords);
-    console.log(favWords.every(({ madde }) => madde !== uniqueWord));
     if (favWords.every(({ madde }) => madde !== uniqueWord)) {
       dispatch({
         type: "ADD_FAV",

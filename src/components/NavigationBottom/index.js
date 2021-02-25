@@ -29,9 +29,6 @@ const NavigationBottom = () => {
     history.push(`/kelime/${newWord}`);
   };
 
-  console.log("word", word);
-  console.log("newWord", newWord);
-
   return (
     <StyledNavigationBottom>
       <div className="logo">

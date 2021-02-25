@@ -14,8 +14,6 @@ const Profile = () => {
     return isFav ? setIsFav(false) : null;
   };
 
-  console.log({ geçmiş: searchHistory });
-
   return (
     <StyledSection>
       <Row>
