@@ -14,14 +14,14 @@ const Profile = () => {
     return isFav ? setIsFav(false) : null;
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     const localData = localStorage.getItem("searchHistory");
     return localData ? JSON.parse(localData) : [];
   }, []);
 
   useEffect(() => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  }, [searchHistory]);
+  }, [searchHistory]);*/
 
   console.log({ geçmiş: searchHistory });
 
@@ -47,10 +47,10 @@ const Profile = () => {
             })
           ) : (
             <>
-              {searchHistory?.map((word, index) => {
+              {searchHistory?.map(({ madde }, index) => {
                 return (
                   <h4 key={index}>
-                    <Link to={`/kelime/${word}`}>{word}</Link>
+                    <Link to={`/kelime/${madde}`}>{madde}</Link>
                   </h4>
                 );
               })}

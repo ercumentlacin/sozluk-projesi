@@ -17,7 +17,7 @@ const SearchResults = () => {
     dispatch,
     favWords,
     searchHistory,
-    setSearchHistory,
+    dispatch2,
   } = useContext(ThemeContext);
   let { slug } = useParams();
   let history = useHistory();
@@ -25,7 +25,12 @@ const SearchResults = () => {
   const uniqueWord = history.location.pathname.slice(8);
 
   useEffect(() => {
-    setSearchHistory([...searchHistory, uniqueWord]);
+    dispatch2({
+      type: "ADD_History",
+      searchHistory: {
+        madde: uniqueWord,
+      },
+    });
   }, [uniqueWord]);
 
   useEffect(() => {

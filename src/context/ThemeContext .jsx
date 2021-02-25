@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useReducer } from "react";
 import { favWordsReducer } from "../reducers/favWordsReducer";
+import { searchHistoryReducer } from "../reducers/searchHistoryReducer";
 
 const ThemeContext = createContext();
 
@@ -8,16 +9,26 @@ export const ThemeProvider = ({ children }) => {
   const [newWord, setNewWord] = useState("");
   const [results, setResults] = useState("");
 
-  const [searchHistory, setSearchHistory] = useState([]);
-
   const [favWords, dispatch] = useReducer(favWordsReducer, [], () => {
     const localData = localStorage.getItem("favWords");
     return localData ? JSON.parse(localData) : [];
   });
 
+  const [searchHistory, dispatch2] = useReducer(
+    searchHistoryReducer,
+    [],
+    () => {
+      const localData = localStorage.getItem("searchHistory");
+      return localData ? JSON.parse(localData) : [];
+    }
+  );
   useEffect(() => {
     localStorage.setItem("favWords", JSON.stringify(favWords));
   }, [favWords]);
+
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   const value = {
     word,
@@ -29,7 +40,7 @@ export const ThemeProvider = ({ children }) => {
     dispatch,
     favWords,
     searchHistory,
-    setSearchHistory,
+    dispatch2,
   };
 
   return (
