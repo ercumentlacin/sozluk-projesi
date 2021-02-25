@@ -5,7 +5,7 @@ import Home from "../page/Home";
 import About from "../page/About";
 import Profile from "../page/Profile";
 import SearchResults from "../page/SearchResults";
-import { ThemeProvider } from "../context/ThemeContext ";
+import { ThemeProvider } from "../context/GlobalContext ";
 // import Navbar from "../components/Navbar";
 import Navigation from "../components/Navigation";
 import { GlobalStyle } from "./styles";

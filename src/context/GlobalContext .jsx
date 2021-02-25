@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext, useReducer } from "react";
 import { favWordsReducer } from "../reducers/favWordsReducer";
 import { searchHistoryReducer } from "../reducers/searchHistoryReducer";
 
-const ThemeContext = createContext();
+const GlobalContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [word, setWord] = useState("");
@@ -44,8 +44,8 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };
 
-export default ThemeContext;
+export default GlobalContext;

@@ -1,10 +1,10 @@
 import { Col, Row } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { StyledSection } from "./style";
 const Profile = () => {
-  const { favWords, searchHistory } = useContext(ThemeContext);
+  const { favWords, searchHistory } = useContext(GlobalContext);
   const [isFav, setIsFav] = useState(true);
 
   const showFav = (e) => {

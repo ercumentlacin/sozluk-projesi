@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from "react";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { useHistory } from "react-router-dom";
 import { Input } from "antd";
 
 const SearchBox = () => {
   let history = useHistory();
-  const { word, setWord, setResults } = useContext(ThemeContext);
+  const { word, setWord, setResults } = useContext(GlobalContext);
   const { Search } = Input;
 
   useEffect(() => {

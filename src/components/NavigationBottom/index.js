@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { Link, useHistory } from "react-router-dom";
 import { StyledNavigationBottom } from "./styles";
 import { SearchOutlined } from "@ant-design/icons";
@@ -7,7 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 const NavigationBottom = () => {
   let history = useHistory();
   const { word, setWord, newWord, setNewWord, setResults } = useContext(
-    ThemeContext
+    GlobalContext
   );
 
   useEffect(() => {

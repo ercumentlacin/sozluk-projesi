@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import Logo from "../../components/Logo";
 import SearchBox from "../../components/SearchBox";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { StyledSection } from "./style";
 import { Row, Col } from "antd";
 
 const Home = () => {
-  const { theme, results } = useContext(ThemeContext);
+  const { theme, results } = useContext(GlobalContext);
 
   return (
     <StyledSection>

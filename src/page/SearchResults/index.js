@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { useParams } from "react-router-dom";
 import { StyledSection } from "./style";
 import AtaturkImage from "../../assets/ataturk.png";
@@ -18,7 +18,7 @@ const SearchResults = () => {
     favWords,
     searchHistory,
     dispatch2,
-  } = useContext(ThemeContext);
+  } = useContext(GlobalContext);
   let { slug } = useParams();
   let history = useHistory();
 

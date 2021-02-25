@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ThemeContext from "../../context/ThemeContext ";
+import GlobalContext from "../../context/GlobalContext ";
 import { StyledSection } from "./style";
 import { Row, Col } from "antd";
 
@@ -12,7 +12,7 @@ import ErcuImage from "../../assets/ercument.jpg";
 import IsoImage from "../../assets/ismail.jpg";
 
 const About = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(GlobalContext);
 
   return (
     <StyledSection>
