@@ -47,4 +47,22 @@ export const StyledSection = styled.section`
       }
     }
   }
+
+  .search_history__links {
+    display: flex;
+    flex-wrap: wrap;
+    a {
+      display: inline-block;
+      font-size: 0.875rem;
+      background-color: #fff;
+      transition: color 0.15s ease-in;
+      letter-spacing: 0.4px;
+      padding: 0.25rem 0.5rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.9);
+      font-weight: 400;
+      border-radius: 0.25rem;
+      margin: 0 0.5rem 0.5rem 0;
+    }
+  }
 `;

@@ -38,18 +38,18 @@ const Profile = () => {
                 );
               })
           ) : (
-            <>
+            <div className="search_history__links">
               {searchHistory
                 ?.slice(0)
                 .reverse()
                 .map(({ madde }, index) => {
                   return (
-                    <h4 key={index}>
+                    <span key={index}>
                       <Link to={`/kelime/${madde}`}>{madde}</Link>
-                    </h4>
+                    </span>
                   );
                 })}
-            </>
+            </div>
           )}
         </Col>
       </Row>

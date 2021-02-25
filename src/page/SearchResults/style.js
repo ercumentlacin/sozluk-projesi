@@ -14,12 +14,13 @@ export const StyledSection = styled.section`
   .tittle__fav {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-
     a {
       h1 {
         width: min-content;
         line-height: 5rem;
+        @media screen and (max-width: 31rem) {
+          line-height: 2rem;
+        }
       }
     }
 
@@ -30,7 +31,10 @@ export const StyledSection = styled.section`
 
       svg {
         color: #446866;
-        font-size: 1.5rem;
+        font-size: 2.5rem;
+        @media (max-width: 500px) {
+          font-size: 1rem;
+        }
       }
     }
   }

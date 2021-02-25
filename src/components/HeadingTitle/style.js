@@ -12,6 +12,5 @@ export const StyledHeadingTitle = styled.h1`
 
   @media (max-width: 500px) {
     font-size: 2rem;
-    margin-bottom: 1rem;
   }
 `;
