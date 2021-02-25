@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // components
 import Home from "../page/Home";
 import About from "../page/About";
@@ -9,6 +9,7 @@ import { ThemeProvider } from "../context/ThemeContext ";
 // import Navbar from "../components/Navbar";
 import Navigation from "../components/Navigation";
 import { GlobalStyle } from "./styles";
+import { Button, Result } from "antd";
 function Layout() {
   return (
     <ThemeProvider>
@@ -21,6 +22,18 @@ function Layout() {
             <Route path="/hakkimizda" component={About} />
             <Route path="/profil" component={Profile} />
             <Route path="/kelime/:slug" component={SearchResults} />
+            <Route path="*">
+              <Result
+                status="404"
+                title="404"
+                subTitle="Aradığınız kelime sözlüğümüzde yer almıyor."
+                extra={
+                  <Button type="primary">
+                    <Link to="/">Anasayfaya geri dön</Link>
+                  </Button>
+                }
+              />
+            </Route>
           </Switch>
         </Router>
       </GlobalStyle>

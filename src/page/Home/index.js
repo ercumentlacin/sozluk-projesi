@@ -21,12 +21,6 @@ const Home = () => {
               Çince, Rusça, Korece, Fransızca ve yine Türkçe’dir.{" "}
             </li>
             <li>
-              Anlamı “Hemencecik başarısızlaştırıcı hâline getiremeyeceğimiz
-              kişilerden biriymişsiniz gibi” olan
-              “Muvaffakiyetsizleştiricileştiriveremeyebileceklerimizdenmişsinizcesine”
-              kelimesi en uzun Türkçe kelimedir ve 70 harften oluşur.
-            </li>
-            <li>
               Türk Dil Kurumu’na göre yalın haldeki en uzun kelime 20 harften
               oluşan “Kuyruksallayangiller”;
             </li>

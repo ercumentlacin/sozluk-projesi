@@ -14,15 +14,6 @@ const Profile = () => {
     return isFav ? setIsFav(false) : null;
   };
 
-  /*useEffect(() => {
-    const localData = localStorage.getItem("searchHistory");
-    return localData ? JSON.parse(localData) : [];
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  }, [searchHistory]);*/
-
   console.log({ geçmiş: searchHistory });
 
   return (
@@ -38,22 +29,28 @@ const Profile = () => {
         </Col>
         <Col sm={{ span: 8, offset: 2 }}>
           {isFav ? (
-            favWords?.map(({ madde }, index) => {
-              return (
-                <h3 key={index}>
-                  <Link to={`/kelime/${madde}`}>{madde}</Link>
-                </h3>
-              );
-            })
+            favWords
+              ?.slice(0)
+              .reverse()
+              .map(({ madde }, index) => {
+                return (
+                  <h3 key={index}>
+                    <Link to={`/kelime/${madde}`}>{madde}</Link>
+                  </h3>
+                );
+              })
           ) : (
             <>
-              {searchHistory?.map(({ madde }, index) => {
-                return (
-                  <h4 key={index}>
-                    <Link to={`/kelime/${madde}`}>{madde}</Link>
-                  </h4>
-                );
-              })}
+              {searchHistory
+                ?.slice(0)
+                .reverse()
+                .map(({ madde }, index) => {
+                  return (
+                    <h4 key={index}>
+                      <Link to={`/kelime/${madde}`}>{madde}</Link>
+                    </h4>
+                  );
+                })}
             </>
           )}
         </Col>

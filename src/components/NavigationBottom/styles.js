@@ -51,6 +51,10 @@ export const StyledNavigationBottom = styled.div`
         padding: 0.3125rem 2.5rem;
         background: #f2f2f2;
         white-space: nowrap;
+
+        @media screen and (max-width: 31.25rem) {
+          width: 100%;
+        }
       }
       .anticon.anticon-search {
         position: absolute;
