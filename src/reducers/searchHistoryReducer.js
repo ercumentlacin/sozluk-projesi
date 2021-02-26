@@ -8,6 +8,9 @@ export const searchHistoryReducer = (state, action) => {
         },
       ];
 
+    case "RESET_History":
+      return [];
+
     default:
       return state;
   }

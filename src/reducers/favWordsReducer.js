@@ -10,6 +10,9 @@ export const favWordsReducer = (state, action) => {
     case "REMOVE_FAV":
       return state.filter(({ madde }) => madde !== action.favWords.madde);
 
+    case "RESET_FAV":
+      return [];
+
     default:
       return state;
   }

@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext ";
 import { StyledSection } from "./style";
 const Profile = () => {
-  const { favWords, searchHistory } = useContext(GlobalContext);
+  const { favWords, searchHistory, dispatch, dispatch2 } = useContext(
+    GlobalContext
+  );
   const [isFav, setIsFav] = useState(true);
 
   const showFav = (e) => {
@@ -12,6 +14,21 @@ const Profile = () => {
   };
   const showHistory = (e) => {
     return isFav ? setIsFav(false) : null;
+  };
+
+  const favReset = (e) => {
+    alert("Favorileri listeniz resetlenmiştir!");
+    dispatch({
+      type: "RESET_FAV",
+      favWords: [],
+    });
+  };
+  const historyReset = (e) => {
+    alert("Arama geçmişiniz silinmiştir!");
+    dispatch2({
+      type: "RESET_History",
+      searchHistory: [],
+    });
   };
 
   return (
@@ -26,6 +43,11 @@ const Profile = () => {
           </Link>
         </Col>
         <Col sm={{ span: 8, offset: 2 }}>
+          {isFav ? (
+            <button onClick={favReset}>Favorileri sil</button>
+          ) : (
+            <button onClick={historyReset}>Geçmişi sil</button>
+          )}
           {isFav ? (
             favWords
               ?.slice(0)

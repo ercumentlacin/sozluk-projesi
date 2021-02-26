@@ -11,6 +11,27 @@ export const StyledSection = styled.section`
   @media screen and (max-width: 35rem) {
     min-height: calc(100vh - 12.1425rem);
   }
+  button {
+    border: none;
+    outline: none;
+    font-family: "Poppins";
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    background-color: #231f20;
+    font-size: 0.875rem;
+    color: white;
+    line-height: 1.15;
+    margin: 0;
+    cursor: pointer;
+    transition: all 250ms ease;
+    margin-bottom: 1rem;
+    width: -webkit-fill-available;
+    padding: 1rem 2rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 
   .ant-row {
     padding: 2rem;
