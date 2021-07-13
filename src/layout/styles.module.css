@@ -1,0 +1,27 @@
+.globalStyle {
+  font-family: 'Poppins', sans-serif;
+}
+.globalStyle a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  font-family: 'Poppins', sans-serif;
+}
+.globalStyle a:hover {
+  color: black;
+}
+.globalStyle .ant-btn-primary {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background: #231f20;
+  border: 0;
+  transition: all 250ms ease-in-out;
+}
+.globalStyle .ant-btn-primary:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,84 @@
+.section {
+  min-height: calc(100vh - 8.2875rem);
+  background: #ddd;
+  background: linear-gradient(
+    0deg,
+    rgba(221, 221, 221, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+@media screen and (max-width: 35rem) {
+  .section {
+    min-height: calc(100vh - 12.1425rem);
+  }
+}
+.section button {
+  border: none;
+  outline: none;
+  font-family: 'Poppins';
+  letter-spacing: 0.3px;
+  font-weight: bold;
+  background-color: #231f20;
+  font-size: 0.875rem;
+  color: white;
+  line-height: 1.15;
+  margin: 0;
+  cursor: pointer;
+  transition: all 250ms ease;
+  margin-bottom: 1rem;
+  width: -webkit-fill-available;
+  padding: 1rem 2rem;
+}
+.section button:hover {
+  opacity: 0.9;
+}
+.section .antRow {
+  padding: 2rem;
+}
+
+.antRow {
+  padding: 2rem;
+}
+
+.section .antRow .page__nav {
+  flex-direction: column;
+  display: flex;
+}
+.section .antRow .page__nav a {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid black;
+}
+.section .antRow .page__nav a:hover {
+  opacity: 0.5;
+}
+.section .antRow .antCol h3 a {
+  padding: 0.5rem 0;
+  width: inherit;
+  display: block;
+}
+@media screen and (max-width: 40rem) {
+  .section .antRow {
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+  .section .antRow .page__nav {
+    margin: 2rem 0;
+  }
+}
+.section .search_history__links {
+  display: flex;
+  flex-wrap: wrap;
+}
+.section .search_history__links a {
+  display: inline-block;
+  font-size: 0.875rem;
+  background-color: #fff;
+  transition: color 0.15s ease-in;
+  letter-spacing: 0.4px;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  border-radius: 0.25rem;
+  margin: 0 0.5rem 0.5rem 0;
+}

@@ -1,0 +1,62 @@
+.header {
+  background-color: white;
+  box-shadow: 0 4px 13px -3px #000;
+  border-bottom: 1px solid #d2d2d2;
+}
+.header .navigation__top {
+  display: flex;
+  padding: 0.5rem 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.header .navigation__top .copy {
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.015625em;
+  font-size: 0.875rem;
+  margin-right: 2rem;
+  text-decoration: none;
+  line-height: 1.15;
+}
+.header .navigation__top .copy__icon img {
+  height: 1.5rem;
+  width: auto;
+  margin-right: 0.5rem;
+}
+.header .navigation__top .copy__link a {
+  color: black;
+  font-weight: 600;
+  transition: all 250ms ease-in-out;
+  font-size: 0.875rem;
+}
+.header .navigation__top .copy__link a:hover {
+  opacity: 0.5;
+  text-decoration: underline;
+}
+.header .navigation__top .links {
+  display: flex;
+  margin-left: auto;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.header .navigation__top .links li a {
+  display: block;
+  padding: 0.625rem;
+  color: #000;
+  letter-spacing: 0.015625em;
+  font-size: 0.875rem;
+  transition: all 0.15s ease-in;
+}
+.header .navigation__top .links li a:hover {
+  opacity: 0.5;
+}
+@media screen and (max-width: 30rem) {
+  .header .navigation__top {
+    flex-direction: column;
+  }
+  .header .navigation__top .links {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,8 +1,7 @@
-import React from "react";
-import { StyledHeadingTitle } from "./style";
+import styles from './styles.module.css';
 
 const HeadingTitle = ({ title }) => {
-  return <StyledHeadingTitle>{title ? title : null}</StyledHeadingTitle>;
+  return <h1 className={styles.h1}>{title ? title : null}</h1>;
 };
 
 export default HeadingTitle;

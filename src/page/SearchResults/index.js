@@ -1,24 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import GlobalContext from "../../context/GlobalContext ";
-import { useParams } from "react-router-dom";
-import { StyledSection } from "./style";
-import AtaturkImage from "../../assets/ataturk.png";
+import { useContext, useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import GlobalContext from '../../context/GlobalContext ';
+import { useParams } from 'react-router-dom';
+import AtaturkImage from '../../assets/ataturk.png';
 // Components
-import { Row, Col, Result, Button } from "antd";
-import HeadingTitle from "../../components/HeadingTitle";
-import { StarOutlined, StarFilled } from "@ant-design/icons";
+import { Row, Col, Result, Button } from 'antd';
+import HeadingTitle from '../../components/HeadingTitle';
+import { StarOutlined, StarFilled } from '@ant-design/icons';
+
+import styles from './styles.module.css';
 
 const SearchResults = () => {
   const [isFav, setIsFav] = useState(false);
-  const {
-    results,
-    setResults,
-    dispatch,
-    favWords,
-    searchHistory,
-    dispatch2,
-  } = useContext(GlobalContext);
+  const { results, setResults, dispatch, favWords, searchHistory, dispatch2 } =
+    useContext(GlobalContext);
   let { slug } = useParams();
   let history = useHistory();
 
@@ -26,7 +21,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     dispatch2({
-      type: "ADD_History",
+      type: 'ADD_History',
       searchHistory: {
         madde: uniqueWord,
       },
@@ -51,7 +46,7 @@ const SearchResults = () => {
   const handleClick = (e) => {
     if (favWords.every(({ madde }) => madde !== uniqueWord)) {
       dispatch({
-        type: "ADD_FAV",
+        type: 'ADD_FAV',
         favWords: {
           madde: uniqueWord,
         },
@@ -59,7 +54,7 @@ const SearchResults = () => {
       setIsFav(true);
     } else {
       dispatch({
-        type: "REMOVE_FAV",
+        type: 'REMOVE_FAV',
         favWords: {
           madde: uniqueWord,
         },
@@ -69,13 +64,14 @@ const SearchResults = () => {
   };
 
   return (
-    <StyledSection>
-      <Row>
+    <section className={styles.section}>
+      <Row className={styles.antRow}>
         <Col
+          className={styles.antCol}
           xs={{ span: 20, offset: 2 }}
           sm={title ? { span: 14, offset: 2 } : { span: 20, offset: 2 }}
         >
-          <div className="tittle__fav">
+          <div className={styles.tittle__fav}>
             <Link to={history.location.pathname}>
               <HeadingTitle title={title} />
             </Link>
@@ -91,7 +87,7 @@ const SearchResults = () => {
                 ({ madde, anlamlarListe, madde_id, kac, birlesikler }) => {
                   return (
                     <div key={madde_id}>
-                      <h2>{`${madde} ${kac != 0 ? `(${kac})` : ""}`}</h2>
+                      <h2>{`${madde} ${kac != 0 ? `(${kac})` : ''}`}</h2>
                       {anlamlarListe?.map(
                         ({ anlam_sira, anlam, anlam_id, ozelliklerListe }) => {
                           return (
@@ -120,11 +116,11 @@ const SearchResults = () => {
                         }
                       )}
                       {birlesikler && (
-                        <div className="words__links">
+                        <div className={styles.words__links}>
                           <h4>
-                            <strong>Benzer Kelimeler:</strong>{" "}
+                            <strong>Benzer Kelimeler:</strong>{' '}
                           </h4>
-                          {birlesikler?.split(", ").map((word, index) => {
+                          {birlesikler?.split(', ').map((word, index) => {
                             return (
                               <Link key={index} to={`/kelime/${word}`}>
                                 {word}
@@ -140,28 +136,28 @@ const SearchResults = () => {
             </>
           ) : (
             <Result
-              status="404"
-              title="404"
-              subTitle="Aradığınız kelime sözlüğümüzde yer almıyor."
+              status='404'
+              title='404'
+              subTitle='Aradığınız kelime sözlüğümüzde yer almıyor.'
               extra={
-                <Button type="primary">
-                  <Link to="/">Anasayfaya geri dön</Link>
+                <Button type='primary'>
+                  <Link to='/'>Anasayfaya geri dön</Link>
                 </Button>
               }
             />
           )}
         </Col>
         <Col
-          className="ataturk__image"
+          className={`${styles.ataturk__image} ${styles.antCol}`}
           xs={{ span: 0 }}
           sm={{ span: 8, offset: 0 }}
         >
           {title ? (
-            <img src={`${AtaturkImage}`} alt="Mustafa Kemal Atatürk" />
+            <img src={`${AtaturkImage}`} alt='Mustafa Kemal Atatürk' />
           ) : null}
         </Col>
       </Row>
-    </StyledSection>
+    </section>
   );
 };
 
