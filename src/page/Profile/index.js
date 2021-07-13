@@ -1,12 +1,12 @@
-import { Col, Row } from "antd";
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import GlobalContext from "../../context/GlobalContext ";
-import { StyledSection } from "./style";
+import { useContext, useState } from 'react';
+import { Col, Row } from 'antd';
+import { Link } from 'react-router-dom';
+import GlobalContext from '../../context/GlobalContext ';
+import styles from './styles.module.css';
+
 const Profile = () => {
-  const { favWords, searchHistory, dispatch, dispatch2 } = useContext(
-    GlobalContext
-  );
+  const { favWords, searchHistory, dispatch, dispatch2 } =
+    useContext(GlobalContext);
   const [isFav, setIsFav] = useState(true);
 
   const showFav = (e) => {
@@ -17,32 +17,35 @@ const Profile = () => {
   };
 
   const favReset = (e) => {
-    alert("Favorileri listeniz resetlenmiştir!");
+    alert('Favorileri listeniz resetlenmiştir!');
     dispatch({
-      type: "RESET_FAV",
+      type: 'RESET_FAV',
       favWords: [],
     });
   };
   const historyReset = (e) => {
-    alert("Arama geçmişiniz silinmiştir!");
+    alert('Arama geçmişiniz silinmiştir!');
     dispatch2({
-      type: "RESET_History",
+      type: 'RESET_History',
       searchHistory: [],
     });
   };
 
   return (
-    <StyledSection>
-      <Row>
-        <Col className="page__nav" sm={{ span: 8, offset: 2 }}>
-          <Link onClick={showFav} to="#">
+    <section className={styles.section}>
+      <Row className={`asd ${styles.antRow}`}>
+        <Col
+          className={`${styles.page__nav} ${styles.antCol}`}
+          sm={{ span: 8, offset: 2 }}
+        >
+          <Link onClick={showFav} to='#'>
             Favorileriniz
           </Link>
-          <Link onClick={showHistory} to="#">
+          <Link onClick={showHistory} to='#'>
             Arama Geçmişiniz
           </Link>
         </Col>
-        <Col sm={{ span: 8, offset: 2 }}>
+        <Col className={styles.antCol} sm={{ span: 8, offset: 2 }}>
           {isFav ? (
             <button onClick={favReset}>Favorileri sil</button>
           ) : (
@@ -60,7 +63,7 @@ const Profile = () => {
                 );
               })
           ) : (
-            <div className="search_history__links">
+            <div className={styles.search_history__links}>
               {searchHistory
                 ?.slice(0)
                 .reverse()
@@ -75,7 +78,7 @@ const Profile = () => {
           )}
         </Col>
       </Row>
-    </StyledSection>
+    </section>
   );
 };
 

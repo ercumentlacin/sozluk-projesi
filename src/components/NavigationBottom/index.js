@@ -1,14 +1,15 @@
-import React, { useEffect, useContext } from "react";
-import GlobalContext from "../../context/GlobalContext ";
-import { Link, useHistory } from "react-router-dom";
-import { StyledNavigationBottom } from "./styles";
-import { SearchOutlined } from "@ant-design/icons";
+import React, { useEffect, useContext } from 'react';
+import GlobalContext from '../../context/GlobalContext ';
+import { Link, useHistory } from 'react-router-dom';
+import { StyledNavigationBottom } from './styles';
+import { SearchOutlined } from '@ant-design/icons';
+
+import styles from './styles.module.css';
 
 const NavigationBottom = () => {
   let history = useHistory();
-  const { word, setWord, newWord, setNewWord, setResults } = useContext(
-    GlobalContext
-  );
+  const { word, setWord, newWord, setNewWord, setResults } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     fetch(`https://www.sozluk.gov.tr/gts?ara=${word}`)
@@ -30,31 +31,31 @@ const NavigationBottom = () => {
   };
 
   return (
-    <StyledNavigationBottom>
-      <div className="logo">
+    <div className={styles.navigationBottom}>
+      <div className={styles.logo}>
         <h1>
-          <Link to="/">
+          <Link to='/'>
             <span>Türkçe</span>
             <span>Sözlük</span>
           </Link>
         </h1>
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="search__input">
+        <div className={styles.search__input}>
           <input
             onChange={handleChange}
-            type="search"
-            name="search"
-            placeholder="Kelime ara"
+            type='search'
+            name='search'
+            placeholder='Kelime ara'
             value={newWord}
           />
-          <SearchOutlined />
+          <SearchOutlined className={styles.anticon} />
         </div>
-        <button onSubmit={handleSubmit} type="submit">
+        <button onSubmit={handleSubmit} type='submit'>
           Ara
         </button>
       </form>
-    </StyledNavigationBottom>
+    </div>
   );
 };
 

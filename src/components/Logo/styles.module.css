@@ -1,0 +1,16 @@
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex img {
+  max-width: 100%;
+  height: auto;
+  width: 50px;
+}
+
+@media (max-width: 575px) {
+  .flex {
+    justify-content: center;
+  }
+}
